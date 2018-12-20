@@ -4,10 +4,6 @@
  * @return {?Promise}
  */
 module.exports = function(ctx) {
-    // make sure android platform is part of build
-    if (!ctx.opts.platforms.includes('android')) {
-        return;
-    }
 
     var fs = ctx.requireCordovaModule('fs'),
         Q = ctx.requireCordovaModule('q'),
@@ -38,7 +34,7 @@ function getConfig(ctx) {
       activityPath = path.join(projectRoot, 'platforms/android/src', packagePath, activityName + '.java');
     }
 
-    var isXwalk = ctx.opts.cordova.plugins.includes('cordova-plugin-crosswalk-webview')
+    var isXwalk = false;
 
     return { packageName, activityPath, activityName, isXwalk };
 }
